@@ -1,0 +1,5 @@
+flask
+joblib
+tensorflow
+numpy
+boto3

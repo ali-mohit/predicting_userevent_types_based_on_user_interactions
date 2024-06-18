@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+  training_service:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    environment:
+      - DATASET_URL=S3://MYS3SERVER.com/datasets.zip
+      - S3_HOST=S3://MYS3SERVER.com/ml_production/
+      - S3_USERNAME=S3_PASSWORD_USER
+      - S3_PASSWORD=S3_PASSWORD_TEST
+      - S3_PRODUCTION_BUCKET=production-ml
+    command: /bin/bash -c python train_model.py

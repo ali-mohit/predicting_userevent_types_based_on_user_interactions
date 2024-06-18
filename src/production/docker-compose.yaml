@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  model-serving:
+    image: <your_registry>/model-serving:latest
+    container_name: model-serving
+    environment:
+      - S3_HOST=https://s3.example.com
+      - S3_USERNAME=your_username
+      - S3_PASSWORD=your_password
+    ports:
+      - "5000:5000"
+      - "9100:9100"
+    volumes:
+      - ./models:/app/models
+    depends_on:
+      - prometheus
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+volumes:
+  models:
