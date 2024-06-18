@@ -1,0 +1,31 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: model-training-cronjob
+spec:
+  schedule: "0 0 * * *"  # Runs every day at midnight
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: model-training-container
+            image: <your_registry>/model-training:latest
+            env:
+            - name: DATASET_URL
+              value: "http://example.com/datasets.zip"
+            - name: S3_HOST
+              value: "https://s3.example.com"
+            - name: S3_USERNAME
+              value: "your_username"
+            - name: S3_PASSWORD
+              value: "your_password"
+            ports:
+            - containerPort: 8001  # Expose metrics port for Prometheus
+            volumeMounts:
+            - name: models-volume
+              mountPath: /app/models
+          volumes:
+          - name: models-volume
+            emptyDir: {}
+          restartPolicy: OnFailure

@@ -1,0 +1,11 @@
+dask[complete]
+dask-ml
+imbalanced-learn
+scikit-learn
+tensorflow
+joblib
+pandas
+boto3
+requests
+prometheus_flask_exporter
+prometheus_client
