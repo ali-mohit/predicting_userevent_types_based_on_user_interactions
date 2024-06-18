@@ -75,7 +75,7 @@ The core challenge is to develop a machine learning model that can accurately cl
 2. Monitor the model's performance and update it periodically with new data.
 
 ## Project Structure
-
+```
 .
 ├── colab_results              # Directory for Colab results
 │   ├── colab.py
@@ -102,7 +102,7 @@ The core challenge is to develop a machine learning model that can accurately cl
 │       ├── requirements_training.txt
 │       └── train_models.py
 └── README.md                  # Project README file
-
+```
 
 ## Usage
 
